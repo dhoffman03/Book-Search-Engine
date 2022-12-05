@@ -10,7 +10,12 @@ const typeDefs = gql`
     }
 
     input savedBook {
-
+        author: [String]
+        description: String
+        title: String
+        bookId: String
+        image: String
+        link: String
     }
 
     type Auth {
