@@ -40,7 +40,7 @@ const resolvers = {
             return { token, user };
         },
 
-        saveBook: async (parent, { newBook }, context) => {
+        saveBook: async (parent, { bookData }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
@@ -59,7 +59,7 @@ const resolvers = {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $pullt: { savedBooks: { bookId: bookId } } },
+                    { $pull: { savedBooks: { bookId: bookId } } },
                     { new: true }
                 );
                 return updatedUser;
